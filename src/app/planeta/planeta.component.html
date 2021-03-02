@@ -1,0 +1,121 @@
+<div class="py-4 px-4">
+  <div class="card">
+    <h5 class="card-header">Mostrar planeta por nombre</h5>
+    <div class="card-body">
+      <form action="">
+        <input class="card-title form-control mr-sm-2" 
+        type="text" placeholder="Ingrese el nombre del planeta" 
+        (keyup.enter)="findAPlanetByName(planet.value)" #planet>
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Visited</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr (click)="onPlanetDetails(planeta)">
+              <td>{{planeta.id}}</td>
+              <td>{{planeta.name}}</td>
+              <td>{{planeta.contador}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+      
+    </div>
+  </div>
+
+  <div class="py-4">
+    <div class="card">
+      <h5 class="card-header">Mostrar todos los planetas</h5>
+      <div class="card-body">
+        <form action="">
+          <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Visited</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of planetas" (click)="onPlanetDetails(p)">
+                <td>{{p.id}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.contador}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-primary" type="submit" (click)="findAllPlanets()">Buscar todos los planetas</button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="py-4">
+    <div class="card">
+      <h5 class="card-header">Crear Planeta</h5>
+      <div class="card-body">
+        <form [formGroup]="forma" (ngSubmit)="createPlanet()"
+              autocomplete="off" 
+        >
+
+        <div class="form-group row">
+          <label class="col-2 col-form-label"><strong>Ingrese el nombre del planeta</strong></label>
+          <div class="col-8">
+            <input class="form-control"
+            type="text" 
+            formControlName="name"
+            [(ngModel)]="planeta.name"
+            placeholder="Nombre del planeta">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label"><strong>Ingrese la rotation del planeta</strong></label>
+          <div class="col-8">
+            <input class="form-control"
+            type="number" 
+            formControlName="rotation"
+            [(ngModel)]="planeta.rotation"
+            placeholder="Rotacion del planeta">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label"><strong>Ingrese el diametro del planeta (KM)</strong></label>
+          <div class="col-8">
+            <input class="form-control"
+            type="number" 
+            formControlName="diametro"
+            [(ngModel)]="planeta.diametro"
+            placeholder="Diametro del planeta (KM)">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label"><strong>Ingrese el clima del planeta</strong></label>
+          <div class="col-8">
+            <input class="form-control"
+            type="text" 
+            formControlName="clima"
+            [(ngModel)]="planeta.clima"
+            placeholder="Clima del planeta">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label"><strong>Ingrese el terreno del planeta</strong></label>
+          <div class="col-8">
+            <input class="form-control"
+            type="text" 
+            formControlName="terreno"
+            [(ngModel)]="planeta.terreno"
+            placeholder="Terreno del planeta">
+          </div>
+        </div>
+          <button class="btn btn-primary" type="submit">Crear</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
