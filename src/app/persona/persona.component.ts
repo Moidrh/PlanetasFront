@@ -18,7 +18,7 @@ export class PersonaComponent implements OnInit {
 
   public people: Persona[] = [];
 
-  constructor( private fb: FormBuilder, private PersonaService: PersonaService, private router: Router) { 
+  constructor( private fb: FormBuilder, private PersonaService: PersonaService, private router: Router) {
      this.crearFormulario();
      this.persona.planeta = new Planeta();
   }
