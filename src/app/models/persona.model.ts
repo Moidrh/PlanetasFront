@@ -1,8 +1,12 @@
+import { Planeta } from './planeta.model';
 export class Persona {
   id: string;
   name: string;
-  estatura: string;
-  peso: string;
+  edad: number;
+  estatura: number;
+  peso: number;
   sexo: string;
-  fechaNacimineto: Date;
+  contador: number;
+  fechaNacimiento: Date;
+  planeta: Planeta;
 }

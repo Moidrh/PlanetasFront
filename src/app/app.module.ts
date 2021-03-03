@@ -11,6 +11,7 @@ import { HeaderComponent } from './shared/header/header.component';
 import { RouterModule } from '@angular/router';
 import { PersonaComponent } from './persona/persona.component';
 import { PlanetaDetailsComponent } from './planeta-details/planeta-details.component';
+import { PersonaDetailsComponent } from './persona-details/persona-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { PlanetaDetailsComponent } from './planeta-details/planeta-details.compo
     PlanetaComponent,
     HeaderComponent,
     PersonaComponent,
-    PlanetaDetailsComponent
+    PlanetaDetailsComponent,
+    PersonaDetailsComponent
   ],
   imports: [
     BrowserModule,

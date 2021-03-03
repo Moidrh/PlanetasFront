@@ -1,0 +1,39 @@
+<div class="py-4" *ngIf="persona">
+  <div class="card">
+    <h5 class="card-header">Detalles de la persona</h5>
+    <div class="card-body">
+      <form action="">
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Visitado</th>
+              <th>Estatura</th>
+              <th>Peso</th>
+              <th>Sexo</th>
+              <th>Fecha de nacimineto</th>
+              <th>Edad</th>
+              <th>Nombre Planeta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{persona.id}}</td>
+              <td>{{persona.name}}</td>
+              <td>{{persona.contador}}</td>
+              <td>{{persona.estatura}} cm</td>
+              <td>{{persona.peso}} Kg</td>
+              <td>{{persona.sexo}}</td>
+              <td>{{persona.fechaNacimiento}}</td>
+              <td>{{persona.edad}}</td>
+              <td>{{persona.planeta.name}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-primary" type="submit" (click)="onRegresar()" >Regresar</button>
+      </form>
+      
+    </div>
+  </div>
+</div>

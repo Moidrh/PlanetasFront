@@ -1,1 +1,181 @@
-<p>persona works!</p>
+<div class="py-4 px-4">
+  <div class="card">
+    <h5 class="card-header">Mostrar persona por nombre</h5>
+    <div class="card-body">
+      <form action="">
+        <input class="card-title form-control mr-sm-2" 
+        type="text" placeholder="Ingrese el nombre de la persona" 
+        (keyup.enter)="findAPersonByName(person.value)" #person>
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <!-- <th>Nombre del planeta</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngIf="persona" (click)="onPersonDetails(persona)">
+              <td>{{persona.id}}</td>
+              <td>{{persona.name}}</td>
+              <!-- <td>{{persona.planeta.name}}</td> -->
+            </tr>
+          </tbody>
+        </table>
+      </form>
+      
+    </div>
+  </div>
+
+  <div class="py-4">
+    <div class="card">
+      <h5 class="card-header">Mostrar todas las personas</h5>
+      <div class="card-body">
+        <form action="">
+          <table class="table table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Nombre del planeta</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of people" (click)="onPersonDetails(p)">
+                <td>{{p.id}}</td>
+                <td>{{p.name}}</td>
+                <td>{{p.planeta.name}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-primary" type="submit" (click)="findAllPeople()">Buscar todos las personas</button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="py-4">
+    <div class="card">
+      <h5 class="card-header">Crear Persona</h5>
+      <div class="card-body">
+        <form [formGroup]="forma" (ngSubmit)="createPerson()"
+              autocomplete="off" 
+        >
+
+        <div class="form-group row">
+          <label class="col-2 col-form-label"><strong>Ingrese el nombre de la persona</strong></label>
+          <div class="col-8">
+            <input class="form-control"
+            type="text" 
+            formControlName="name"
+            [(ngModel)]="persona.name"
+            placeholder="Nombre de la persona">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label"><strong>Ingrese la edad de la persona</strong></label>
+          <div class="col-8">
+            <input class="form-control"
+            type="number" 
+            formControlName="edad"
+            [(ngModel)]="persona.edad"
+            placeholder="Edad de la persona">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label"><strong>Ingrese la estatura de la persona</strong></label>
+          <div class="col-8">
+            <input class="form-control"
+            type="number" 
+            formControlName="estatura"
+            [(ngModel)]="persona.estatura"
+            placeholder="Estatura de la persona">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label"><strong>Ingrese el peso de la persona</strong></label>
+          <div class="col-8">
+            <input class="form-control"
+            type="number" 
+            formControlName="peso"
+            [(ngModel)]="persona.peso"
+            placeholder="Peso de la persona">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label"><strong>Ingrese el sexo de la persona</strong></label>
+          <div class="col-8">
+            <input class="form-control"
+            type="text" 
+            formControlName="sexo"
+            [(ngModel)]="persona.sexo"
+            placeholder="Sexo de la persona">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label"><strong>Ingrese la fecha de nacimiento de la persona</strong></label>
+          <div class="col-8">
+            <input class="form-control"
+            type="date" 
+            formControlName="fechaNacimiento"
+            [(ngModel)]="persona.fechaNacimiento"
+            placeholder="Fecha de nacimiento de la persona">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label"><strong>Ingrese el nombre del planeta al que pertenece la persona</strong></label>
+          <div class="col-8">
+            <input class="form-control"
+            type="text" 
+            formControlName="planetaName"
+            [(ngModel)]="persona.planeta.name"
+            placeholder="Nombre del planeta">
+          </div>
+        </div>
+        <!-- <div class="form-group row">
+          <label class="col-2 col-form-label"><strong>Ingrese la rotation del planeta</strong></label>
+          <div class="col-8">
+            <input class="form-control"
+            type="number" 
+            formControlName="rotation"
+            [(ngModel)]="planeta.rotation"
+            placeholder="Rotacion del planeta">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label"><strong>Ingrese el diametro del planeta (KM)</strong></label>
+          <div class="col-8">
+            <input class="form-control"
+            type="number" 
+            formControlName="diametro"
+            [(ngModel)]="planeta.diametro"
+            placeholder="Diametro del planeta (KM)">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label"><strong>Ingrese el clima del planeta</strong></label>
+          <div class="col-8">
+            <input class="form-control"
+            type="text" 
+            formControlName="clima"
+            [(ngModel)]="planeta.clima"
+            placeholder="Clima del planeta">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-2 col-form-label"><strong>Ingrese el terreno del planeta</strong></label>
+          <div class="col-8">
+            <input class="form-control"
+            type="text" 
+            formControlName="terreno"
+            [(ngModel)]="planeta.terreno"
+            placeholder="Terreno del planeta">
+          </div>
+        </div> -->
+          <button class="btn btn-primary" type="submit">Crear</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
